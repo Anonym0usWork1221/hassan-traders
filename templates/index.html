@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h3>Hassan Trader's Management System Dashboard</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4>When you lose a database, just click the Retrieve Backup Database button to restore it from the server.</h4><br>
+                    <button type="button" class="btn btn-danger me-1" data-bs-toggle="modal"
+                        data-bs-target="#downloadRecords212">
+                        <i class="fas fa-cloud-download-alt fa-lg"></i> Retrieve Backup Database
+                    </button>
+
+                    <!-- Modal - Download Record -->
+                    <div class="modal" id="downloadRecords212" tabindex="-1"
+                        aria-labelledby="ViewModalLabel3" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">
+                                        Recover Database: Retrieve Backup Database From online server
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to rewrite the current database records?<br>
+                                        <strong>Caution</strong>: This will bring back the deleted and updated data into database.<br>
+                                        <strong>Caution</strong>: First make backup of your local database first.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{% url 'update_data' %}" class="btn btn-danger">Retrieve data from Firebase</a>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- First Graph - Ledger Record -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Profit Gain Register</h4>
+                    <div class="plotly-graph" id="profit-plotly-graph">
+                        {{ profit_graph | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Second Graph - Stock Record -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Ledger Record</h4>
+                    <div class="plotly-graph" id="ledger-plotly-graph">
+                        {{ ledger_graph | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Third Graph - Profit Gain Register -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Stock Record</h4>
+                    <div class="plotly-graph" id="stock-plotly-graph">
+                        {{ stock_graph | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

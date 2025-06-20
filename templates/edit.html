@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block body %}
+<h3 class="text-center m-4 white-text">{{ top_title }}</h3>
+
+<!--If the user is Updated in database-->
+{% if success %}
+<div class="alert alert-success" role="alert">
+    {{ success_alert }}
+
+    {% with return_url|split_url:" " as url_parts %}
+        {% if url_parts|length > 1 %}
+            {# URL with parameters #}
+            <a href="{% url url_parts.0 url_parts.1 %}" class="alert-link">Go to Home Page.</a>
+        {% else %}
+            {# URL without parameters #}
+            <a href="{% url url_parts.0 %}" class="alert-link">Go to Home Page.</a>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<!--If the user is being Updating in database-->
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card bg-light mb-3">
+            <div class="card-header">
+                <i class="fa-solid fa-pen-to-square fa-lg"></i> {{ form_top_legend }}
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Update</button>
+
+                    {% with url_parts=return_url|split_url:' ' %}
+                            {% if url_parts|length > 1 %}
+                                {# URL with parameters #}
+                                <a href="{% url url_parts.0 url_parts.1 %}" class="btn btn-secondary">Cancel</a>
+                            {% else %}
+                                {# URL without parameters #}
+                                <a href="{% url url_parts.0 %}" class="btn btn-secondary">Cancel</a>
+                            {% endif %}
+                    {% endwith %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

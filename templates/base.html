@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title and Headers -->
+    <title>Hassan Trader's Management System</title>
+    <link rel="shortcut icon" href="{% static 'images/bug-solid.ico' %}" type="image/x-icon" />
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/printThis.js' %}"></script>
+
+    <!-- Style -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/printing.css' %}" rel="stylesheet">
+
+    <!-- Fonts and icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <style>
+        body {
+            background-image: url("{% static 'images/background.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .text-center {
+            color: black; /* Set the footer text color to white */
+        }
+        
+        .white-text {
+            color: black; /* Set the footer text color to white */
+        }
+
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation bar-->
+
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}"><i class="fa-solid fa-bug fa-lg"></i> Hassan Traders</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ledger_users' %}"><i class="fa-solid fa-book fa-lg"></i> Ledger Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'stock_users' %}"><i class="fa-solid fa-cubes fa-lg"></i> Stock Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profit_users' %}"><i class="fas fa-dollar-sign fa-lg"></i> Profit/Loss Register</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search" id="searchInput">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!--Container for Other classes-->
+    <div class="container-fluid">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    <!--Footer-->
+    <footer class="mt-auto mb-4 text-center">
+        <div>
+            <span>
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear())</script> Abdul Moez
+            </span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    <!--Search Options-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("searchInput");
+            const tableRows = document.querySelectorAll("tbody tr");
+            function filterTableRows() {
+                const searchTerm = searchInput.value.toLowerCase();
+                tableRows.forEach(function (row) {
+                    const nameCell = row.querySelector("td:nth-child(2)");
+                    const nameText = nameCell.textContent.toLowerCase();
+                    if (nameText.includes(searchTerm)) {
+                        row.style.display = "table-row";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            }
+            searchInput.addEventListener("input", filterTableRows);
+        });
+    </script>
+
+</body>
+
+</html>

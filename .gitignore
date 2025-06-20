@@ -1,0 +1,73 @@
+# ---- Python & Django ----------------------------------------------------
+
+**pycache**/
+\*.py\[cod]
+\*\$py.class
+
+# Virtual environments
+
+.env
+.venv/
+venv/
+ENV/
+
+# SQLite database & migrations
+
+# (keep migration **code**, ignore generated DB + journals)
+
+db.sqlite3
+db.sqlite3-\*-journal
+
+# Logs
+
+\*.log
+
+# Media & collected static files (generated at runtime / collectstatic)
+
+media/
+staticfiles/
+
+# Firebase private key (❗ never commit credentials)
+
+static/google-services.json
+
+# IDE / Editor settings
+
+.idea/
+.vscode/
+\*.sublime-project
+\*.sublime-workspace
+
+# macOS & Windows cruft
+
+.DS\_Store
+Thumbs.db
+Icon?
+
+# Test & coverage artifacts
+
+.pytest\_cache/
+.hypothesis/
+.coverage
+htmlcov/
+
+# Packaging / build
+
+build/
+dist/
+\*.egg-info/
+.eggs/
+
+# PyInstaller
+
+\*.spec
+
+# Misc editor swap / backup files
+
+\*\~
+\*.swp
+\*.swo
+
+
+tasks.pickle
+fireabse_test.py
