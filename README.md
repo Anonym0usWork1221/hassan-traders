@@ -66,7 +66,7 @@
 
 ```bash
 # 1. Clone & enter project
-$ git clone https://github.com/Anonym0usWork1221/hassan‑traders.git
+$ git clone https://github.com/Anonym0usWork1221/hassan-traders.git
 $ cd hassan‑traders
 
 # 2. Create a Python 3.11 virtual env & activate
@@ -110,7 +110,7 @@ Voilà you have a fully‑functional accounting & inventory system on your lapto
 ### Clone & Virtual Env
 
 ```bash
-$ git clone https://github.com/Anonym0usWork1221/hassan‑traders.git
+$ git clone https://github.com/Anonym0usWork1221/hassan-traders.git
 $ cd hassan‑traders
 $ python -m venv .venv && source .venv/bin/activate
 ```
